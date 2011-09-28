@@ -117,14 +117,14 @@ if(defined("CMS_BACKEND"))
 					@chmod(CMS_ROOT . '/public', 0777);
 					if( ! is_dir(CMS_ROOT . '/public/uploads')) @mkdir(CMS_ROOT . '/public/uploads');
 					@chmod(CMS_ROOT . '/public/uploads', 0777);
-				}
 				
-				foreach($_FILES['form']['error'] as $id => $error)
-				{
-					$tmp_name = $_FILES['form']['tmp_name'][$id];
-					$filename = $_FILES['form']['name'][$id];
-					if (move_uploaded_file($tmp_name, CMS_ROOT . '/public/uploads/' . $filename)) {
-						$Email->attach(CMS_ROOT . '/public/uploads/' . $filename);
+					foreach($_FILES['form']['error'] as $id => $error)
+					{
+						$tmp_name = $_FILES['form']['tmp_name'][$id];
+						$filename = $_FILES['form']['name'][$id];
+						if (move_uploaded_file($tmp_name, CMS_ROOT . '/public/uploads/' . $filename)) {
+							$Email->attach(CMS_ROOT . '/public/uploads/' . $filename);
+						}
 					}
 				}
 
