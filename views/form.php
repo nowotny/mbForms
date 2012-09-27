@@ -1,6 +1,6 @@
 <link href="<?php echo URL_PUBLIC; ?>wolf/plugins/mbforms/css/style.css" media="screen" rel="Stylesheet" type="text/css" />
 <div id="mbforms">
-	<form method="post" action="<?php echo $formurl; ?>">
+	<form method="post" action="<?php echo $formurl; ?>"<?php if($hasFile) echo ' enctype="multipart/form-data"' ?>>
 		<?php // don't remove this hidden field ?>
 		<input type="hidden" name="formaction" value="send" />
 		<?php // end ?>

@@ -95,7 +95,8 @@ if(!defined("CMS_ROOT"))
 						<option value="text"<?php echo ($item['type'] == 'text') ? ' selected="selected"' : ''; ?>><?php echo __('Text Area'); ?></option>
 						<option value="select"<?php echo ($item['type'] == 'select') ? ' selected="selected"' : ''; ?>><?php echo __('Drop Down'); ?></option>
 						<option value="checkbox"<?php echo ($item['type'] == 'checkbox') ? ' selected="selected"' : ''; ?>><?php echo __('Checkbox'); ?></option>
-						<option value="radio"<?php echo ($item['type'] == 'radio') ? ' selected="selected"' : ''; ?>><?php echo __('Radio Buttons'); ?></option>				
+						<option value="radio"<?php echo ($item['type'] == 'radio') ? ' selected="selected"' : ''; ?>><?php echo __('Radio Buttons'); ?></option>
+						<option value="file"<?php echo ($item['type'] == 'file') ? ' selected="selected"' : ''; ?>><?php echo __('File'); ?></option>
 					</select>
 				</div>
 				<div class="row_full">
@@ -152,7 +153,8 @@ if(!defined("CMS_ROOT"))
 				<option value="text"><?php echo __('Text Area'); ?></option>
 				<option value="select"><?php echo __('Drop Down'); ?></option>
 				<option value="checkbox"><?php echo __('Checkbox'); ?></option>
-				<option value="radio"><?php echo __('Radio Buttons'); ?></option>				
+				<option value="radio"><?php echo __('Radio Buttons'); ?></option>
+				<option value="file"><?php echo __('File'); ?></option>
 			</select>
 		</div>
 		<div class="row_full">

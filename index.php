@@ -105,13 +105,29 @@ if(defined("CMS_BACKEND"))
 				
 				foreach($form['items'] as $k => $item)
 				{
-					$email_body .= "<strong>".$item->label.":</strong> ".nl2br($_POST['form'][$item->id])."<br />";
-				}	
-			
+					if($item->type != 'file') $email_body .= "<strong>".$item->label.":</strong> ".nl2br($_POST['form'][$item->id])."<br />";
+				}
+
 				use_helper('Email');
 				// setup email class
 				$Email = new Email(array('mailtype' => 'html'));
 				
+				if(is_array($_FILES))
+				{
+					@chmod(CMS_ROOT . '/public', 0777);
+					if( ! is_dir(CMS_ROOT . '/public/uploads')) @mkdir(CMS_ROOT . '/public/uploads');
+					@chmod(CMS_ROOT . '/public/uploads', 0777);
+				
+					foreach($_FILES['form']['error'] as $id => $error)
+					{
+						$tmp_name = $_FILES['form']['tmp_name'][$id];
+						$filename = $_FILES['form']['name'][$id];
+						if (move_uploaded_file($tmp_name, CMS_ROOT . '/public/uploads/' . $filename)) {
+							$Email->attach(CMS_ROOT . '/public/uploads/' . $filename);
+						}
+					}
+				}
+
 				$Email->from(Setting::get('admin_email'), 'mbForms - '.$form['form']->formname);
 				$Email->to($form['form']->emailto);
 				$Email->subject($form['form']->formname.' '.__('Submission'));

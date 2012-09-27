@@ -53,6 +53,7 @@ class mbforms extends Record
 		}					   
 		
 		// get the form items
+        $hasFile = false;
 		$viewArray['items'] = (array)mbformsItem::findAllFrom('mbformsItem', '`formid` = '.Record::escape($form->id).'ORDER BY `orderno` ASC, `id` ASC');
 		foreach($viewArray['items'] as $k => $v)
 		{
@@ -62,11 +63,13 @@ class mbforms extends Record
 			if(isset($viewArray['formvalues'][$arrayV['id']]))
 			{
 				$prefill = $viewArray['formvalues'][$arrayV['id']];
-			}			
+			}
 			$formitems .= mbformsItem::generateItem($arrayV, $prefill);
+            if($arrayV['type'] == 'file') $hasFile = true;
 		}
 		// set form items to view array and get / set the plugin settings
-		$viewArray['formitems'] = $formitems;
+		$viewArray['hasFile'] = $hasFile;
+        $viewArray['formitems'] = $formitems;
 		$viewArray['settings'] = Plugin::getAllSettings('mbforms');
 		
 		// finally check for any error messages and display these
