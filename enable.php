@@ -2,16 +2,16 @@
 
 /**
  * mbForms
- * 
+ *
  * Form Builder Plugin for WolfCMS
  * Please keep this message intact when redistributing this plugin.
- * 
+ *
  * @author        Mike Barlow
  * @email        mike@mikebarlow.co.uk
- * 
+ *
  * @file        enable.php
  * @date        16/08/2010
- * 
+ *
  * Thanks to Sartas for SQLite Support.
  *
  */
@@ -35,7 +35,7 @@ if($driver == 'mysql')
 	`usecaptcha` tinyint(1) NOT NULL default '0',
 	`successtpl` text NOT NULL,
 	PRIMARY KEY  (`id`)
-	) ENGINE=MyISAM ;";
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 	
 	$table2 = "CREATE TABLE IF NOT EXISTS `" . TABLE_PREFIX . "mbforms_items` (
 	`id` int(10) NOT NULL auto_increment,
@@ -47,7 +47,7 @@ if($driver == 'mysql')
 	`formvalues` text NOT NULL,
 	`isrequired` tinyint(1) NOT NULL default '0',
 	PRIMARY KEY  (`id`)
-	) ENGINE=MyISAM ;";
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 
 } elseif($driver == 'sqlite')
 {
