@@ -1,12 +1,12 @@
 <?php
 
     /**
-     * Polish file for plugin mbforms
+     * English translation file for plugin mbforms
      *
      * @package Plugins
      * @subpackage mbforms
      *
-     * @author Piotr Łukaszewski <nowotnypl@gmail.pl>
+     * @author Piotr Łukaszewski <nowotnypl@gmail.com>
      * @version Wolf 0.7.3
      * @version mbForms 1.0.2
      */
